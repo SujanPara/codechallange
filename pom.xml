@@ -15,13 +15,49 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+
+		<build.codechallange.jdbc.drive>com.mysql.jdbc.Driver</build.codechallange.jdbc.drive>
+		<build.codechallange.jdbc.url>jdbc:mysql://localhost:3306/codechallange?createDatabaseIfNotExist=true</build.codechallange.jdbc.url>
+		<build.codechallange.jdbc.username>root</build.codechallange.jdbc.username>
+		<build.codechallange.jdbc.password>password</build.codechallange.jdbc.password>
+
+		<liquibase.profile>master</liquibase.profile>
+
+		<liquibase.codechallange.changeLogFile>
+			/src/main/resources/liquibase/codechallange-changeset-${liquibase.profile}.xml
+		</liquibase.codechallange.changeLogFile>
+
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok-maven-plugin</artifactId>
+			<version>1.16.20.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.39</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
 		</dependency>
 
 		<dependency>
@@ -36,6 +72,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<changeLogFile>${liquibase.codechallange.changeLogFile}</changeLogFile>
+					<driver>${build.codechallange.jdbc.drive}</driver>
+					<url>${build.codechallange.jdbc.url}</url>
+					<username>${build.codechallange.jdbc.username}</username>
+					<password>${build.codechallange.jdbc.password}</password>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

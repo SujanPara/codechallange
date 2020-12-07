@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd" logicalFilePath="master">
+
+    <changeSet id="1" author="parajulisujan360@gmail.com">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="enrollee"/>
+            </not>
+        </preConditions>
+        <sql>
+            <![CDATA[
+            CREATE TABLE enrollee (
+            id                       INT NOT NULL AUTO_INCREMENT,
+            name                     VARCHAR(60) NOT NULL,
+            dob                      DATE NOT NULL,
+            activation_status        BIT(1) NOT NULL DEFAULT 0,
+            phone                    VARCHAR(10),
+            subscriber_id            INT,
+            PRIMARY KEY (id),
+            CONSTRAINT fk_enrollee_subscriber_id FOREIGN KEY (subscriber_id) REFERENCES enrollee(id)
+            );
+            ]]>
+        </sql>
+    </changeSet>
+</databaseChangeLog>

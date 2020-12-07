@@ -1,0 +1,210 @@
+{
+	"id": "2ebc95e2-875d-4f14-b81b-352d87564d80",
+	"name": "CodeChallange",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"fc339d5a-9dc9-410b-99ce-d670755e3c8c",
+		"03c025e9-d45c-4c2f-961b-4e29e1916ec1",
+		"25aee4e8-8daf-4185-8575-233dcf1d6a3a",
+		"5f6f8295-29f4-41f6-a735-8e95aaa95791",
+		"bfdfda3b-5582-43a9-9c32-a48ece3b93ca",
+		"7fe2a94d-024c-41b4-8cf2-6afe3b4c7edc",
+		"ce712326-3414-4d73-9f2e-5c741b47ab30"
+	],
+	"folders_order": [],
+	"protocolProfileBehavior": {},
+	"folders": [],
+	"requests": [
+		{
+			"id": "03c025e9-d45c-4c2f-961b-4e29e1916ec1",
+			"name": "Get dependents",
+			"url": "http://localhost:8080/v1/enrollee/dependents?subscriberId=1",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [
+				{
+					"enabled": true,
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "subscriberId",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "25aee4e8-8daf-4185-8575-233dcf1d6a3a",
+			"name": "Save new primary subscriber with dependents",
+			"url": "http://localhost:8080/v1/enrollee/saveEnrollee",
+			"description": "",
+			"data": [],
+			"dataOptions": null,
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"rawModeData": "{\n  \"name\": \"Sujan Parajuli\",\n  \"dob\": \"1995-03-22\",\n  \"activationStatus\": true,\n  \"phone\": \"7183168807\",\n  \"dependents\": [\n  \t{\n    \"name\": \"My spouse\",\n    \"dob\": \"1998-12-13\",\n    \"activationStatus\": true\n  \t}\n  \t]\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "5f6f8295-29f4-41f6-a735-8e95aaa95791",
+			"name": "Update primary subscriber - 1 with dependents",
+			"url": "http://localhost:8080/v1/enrollee/saveEnrollee",
+			"description": "",
+			"data": [],
+			"dataOptions": null,
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"enabled": true,
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"rawModeData": "{\n  \"id\": \"1\",\n  \"name\": \"Sujan Parajuli - update\",\n  \"dob\": \"1995-03-22\",\n  \"activationStatus\": true,\n  \"phone\": \"7183168807\",\n  \"dependents\": [\n  \t{\n    \"id\": \"2\",      \n    \"name\": \"My spouse - update\",\n    \"dob\": \"1998-12-13\",\n    \"activationStatus\": true\n  \t}\n  \t]\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "7fe2a94d-024c-41b4-8cf2-6afe3b4c7edc",
+			"name": "Update dependent 1",
+			"url": "http://localhost:8080/v1/enrollee/saveDependents",
+			"description": "",
+			"data": [],
+			"dataOptions": null,
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"enabled": true,
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"rawModeData": "{\n  \"subscriberId\": 1,\n  \"dependents\": [\n  \t{\n     \"id\": \"3\",   \n    \"name\": \"My Kid\",\n    \"dob\": \"1998-12-13\",\n    \"activationStatus\": true\n  \t}\n  \t]\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "bfdfda3b-5582-43a9-9c32-a48ece3b93ca",
+			"name": "Add new dependent",
+			"url": "http://localhost:8080/v1/enrollee/saveDependents",
+			"description": "",
+			"data": [],
+			"dataOptions": null,
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"enabled": true,
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"rawModeData": "{\n  \"subscriberId\": 1,\n  \"dependents\": [\n  \t{\n    \"name\": \"My spouse\",\n    \"dob\": \"1998-12-13\",\n    \"activationStatus\": true\n  \t}\n  \t]\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "ce712326-3414-4d73-9f2e-5c741b47ab30",
+			"name": "Delete enrollee",
+			"url": "http://localhost:8080/v1/enrollee/delete?id=4",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "4",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "fc339d5a-9dc9-410b-99ce-d670755e3c8c",
+			"name": "Get all enrollees",
+			"url": "http://localhost:8080/v1/enrollee/subscribers",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
